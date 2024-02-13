@@ -1,4 +1,3 @@
-from re import template
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_view
@@ -12,4 +11,10 @@ urlpatterns = [
          name='password_change'),
     path('password_change_done/', auth_view.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
          name='password_change_done'),
+    path('password_reset/', auth_view.PasswordResetView.as_view(template_name='password_reset_form.html'),
+         name='password_reset'),
+    path('password_reset/done/', auth_view.PasswordResetDoneView.as_view(template_name='password_reset_form_done.html'),
+         name='password_reset_done'),
+    path('reset/<uidb64>/<token>', auth_view.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'),
+         name='password_reset_confirm'),
 ]
