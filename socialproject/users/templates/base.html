@@ -8,13 +8,17 @@
 </head>
 <body>
 <nav>
-    <div>
+    <div class="flex">
         <!-- website logo-->
         <div>
-            <a href="">
-                <img class="h-16" src="{% static 'users/images/social.png' %}" alt="">
-                <span>Photo app</span>
+            <a class="flex" href="">
+                <img class="h-8 mr-2" src="{% static 'users/images/social.png' %}" alt="">
+                <span class="font-bold text-lg text-gray-500">Photo app</span>
             </a>
+        </div>
+        <div>
+            <a class="py-4 px-2 text-gray-500 font-semibold" href="">Link 1</a>
+            <a class="py-4 px-2 text-gray-500 font-semibold" href="">Link 2</a>
         </div>
     </div>
 </nav>
