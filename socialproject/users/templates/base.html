@@ -4,8 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'users/styles.css' %}">
 </head>
 <body>
+<nav>
+    <div>
+        <!-- website logo-->
+        <div>
+            <a href="">
+                <img class="h-16" src="{% static 'users/images/social.png' %}" alt="">
+                <span>Photo app</span>
+            </a>
+        </div>
+    </div>
+</nav>
     {% if request.user.is_authenticated %}
     <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
