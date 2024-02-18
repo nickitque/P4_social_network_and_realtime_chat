@@ -7,29 +7,31 @@
     <link rel="stylesheet" href="{% static 'users/styles.css' %}">
 </head>
 <body>
-<nav>
-    <div class="flex">
+    <nav class="shadow-lg">
+        <div class="px-4 mx-auto">
+            <div class="flex justify-between">
         <!-- website logo-->
-        <div>
-            <a class="flex" href="">
-                <img class="h-8 mr-2" src="{% static 'users/images/social.png' %}" alt="">
-                <span class="font-bold text-lg text-gray-500">Photo app</span>
-            </a>
-        </div>
-        <div>
-            <a class="py-4 px-2 text-gray-500 font-semibold" href="">Link 1</a>
-            <a class="py-4 px-2 text-gray-500 font-semibold" href="">Link 2</a>
+            <div>
+                <a class="flex" href="">
+                    <img class="h-8 mr-2" src="{% static 'users/images/social.png' %}" alt="">
+                    <span class="font-bold text-lg text-gray-500">Photo app</span>
+                </a>
+            </div>
+            <div class="space-x-1">
+                    {% if request.user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="py-4 px-2 text-gray-500 font-semibold" href="">Logout</button>
+                        {% else %}
+                <a class="py-4 px-2 text-gray-500 font-semibold" href="{% url 'login' %}">Login</a>
+                            {% endif %}
+                <a class="py-4 px-2 text-gray-500 font-semibold" href="">Link 3</a>
+
+            </div>
         </div>
     </div>
 </nav>
-    {% if request.user.is_authenticated %}
-    <form method="post" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit">logout</button>
-</form>
-    {% else %}
-    <a href="{% url 'login' %}">Login</a>
-    {% endif %}
+
     {% block body %}
     {% endblock %}
 </body>
